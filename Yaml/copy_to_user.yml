@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks: 
+  - name: adding user...
+    user: 
+      name: Abhi
+  - name: copying file
+    copy: 
+      src: ~/docker/index.html
+      dest: /home/Abhi/ 
+  
+  

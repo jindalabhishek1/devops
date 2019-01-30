@@ -1,0 +1,14 @@
+---
+ - name: create ec2 instance
+   ec2:
+     aws_access_key: "**************"
+     aws_secret_key: "********"*******************"
+     image: ami-036affea69a1101c9
+     wait: yes
+     instance_type: t2.micro
+     group_id: sg-0db994a10dbebd754
+     region: us-west-2
+     count_tag:
+       Name: apacheserver
+     exact_count: 1
+   register: ec2

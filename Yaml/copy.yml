@@ -1,0 +1,23 @@
+---
+- hosts: all
+  tasks: 
+  - name: installing httpd...
+    yum: 
+      name: httpd
+      state: latest
+  - name: Starting service httpd
+    service: 
+      name: httpd
+      state: restarted
+      enabled: yes
+  - name: copying index file
+    copy: 
+      src: ~/docker/index.html
+      dest: /var/www/html/
+    notify: 
+    - restart apache
+  handlers:
+  - name: restart apache
+    service: 
+      name: httpd
+      state: restarted
